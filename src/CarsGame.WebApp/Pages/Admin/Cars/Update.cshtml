@@ -4,10 +4,35 @@
 }
 <form method="post">
     <div class="form-group">
-        <label asp-for="Car.Make"></label>
-        <input asp-for="Car.Make" class="form-control" />
-        <span asp-validation-for="Car.Make" name="Make" class="text-danger"></span>
+        <input type="hidden" asp-for="Id" />
+        
     </div>
+
+    <div class="form-group">
+        <label for="make">Make</label>
+        <input asp-for="Make" class="form-control" placeholder="Enter a valid MAKE" />
+    </div>
+    <div class="form-group">
+        <label for="make">Model</label>
+         <input asp-for="Model" class="form-control" placeholder="Enter a valid MODEL" />
+    </div>
+    <div class="form-group">
+        <label for="make">Year</label>
+         <input asp-for="Year" class="form-control" placeholder="Enter a valid YEAR" />
+    </div>
+    <div class="form-group">
+        <label for="make">Doors</label>
+         <input asp-for="Doors" class="form-control" placeholder="Enter a valid number of DOORS" />
+    </div>
+    <div class="form-group">
+        <label for="make">Color</label>
+         <input asp-for="Color" class="form-control" placeholder="Enter a valid Color" />
+    </div>
+    <div class="form-group">
+        <label for="make">Price</label>
+         <input asp-for="Price" class="form-control" placeholder="Enter a valid PRICE" />
+    </div>
+
     <div class="form-group">
         <button type="submit" class="btn btn-success">Save</button>
         <a href="/Admin/Cars/Index" class="btn btn-primary" role="button">Back</a>

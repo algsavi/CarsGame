@@ -58,4 +58,20 @@ public class Car : Entity
 
         return car;
     }
+
+    public static Car Update(Guid id, string make, string model, int year, int doors, string color, decimal price)
+    {
+        var car = new Car
+        {
+            Id = id,
+            Make = make,
+            Model = model,
+            Year = year,
+            Doors = doors,
+            Color = color,
+            Price = price,
+        };
+
+        return car;
+    }
 }

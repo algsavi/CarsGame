@@ -34,7 +34,12 @@ namespace CarsGame.WebApp.Pages.Game
 
         public IActionResult OnPost()
         {
-            return RedirectToPage("/Game/Game");
+            var car = carService.GetById(Car.Id);
+
+            if (car.Price == Price)
+                return RedirectToPage("/Game/Sucess");
+
+            return RedirectToAction("error", new { id = Car.Id });
         }
     }
 }

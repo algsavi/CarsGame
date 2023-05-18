@@ -14,28 +14,63 @@ namespace CarsGame.WebApp.Pages.Admin.Cars
             this.carService = carService;
         }
 
-        public Car Car { get; set; }
+        [BindProperty]
+        public Guid Id { get; set; }
+
+        [BindProperty]
+        public string Make { get; set; }
+
+        [BindProperty]
+        public string Model { get; set; }
+
+        [BindProperty]
+        public int Year { get; set; }
+
+        [BindProperty]
+        public int Doors { get; set; }
+
+        [BindProperty]
+        public string Color { get; set; }
+
+        [BindProperty]
+        public decimal Price { get; set; }
 
         public IActionResult OnGet(Guid id)
         {
-            Car = carService.GetById(id);
+            var car = carService.GetById(id);
 
-            if (Car == null)
+            if (car == null)
             {
                 return NotFound();
             }
 
+            Make = car.Make;
+            Model = car.Model;
+            Year = car.Year;
+            Doors = car.Doors;
+            Color = car.Color;
+            Price = car.Price;
+
             return Page();
         }
 
-        public IActionResult OnPost(Car car)
+        public IActionResult OnPost()
         {
+            var existingCar = carService.GetById(Id);
+
+            if (existingCar == null)
+            {
+                return NotFound();
+            }
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            carService.UpdateCar(Car);
+            existingCar = Car.Update(Id, Make, Model, Year, Doors, Color, Price);
+
+            carService.UpdateCar(existingCar);
 
             return RedirectToPage("Index");
         }
