@@ -1,0 +1,60 @@
+﻿@page
+@using CarsGame.Application;
+@using CarsGame.Domain.Car;
+@using CarsGame.Infrastructure;
+
+@model CarsGame.WebApp.Pages.Admin.Cars.IndexModel
+@inject CarService CarService
+
+@{
+    
+    List<Car> cars = CarService.GetAll().ToList();
+}
+
+<div class="container-lg">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8"><h2>Cars</h2></div>
+                    <div class="col-sm-4">
+                        <a href="/Admin/Cars/Create" class="btn btn-primary" role="button">Add New Car</a>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Actions</th>
+                        <th>Id</th>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Year</th>
+                        <th>Doors</th>
+                        <th>Color</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var car in cars)
+                    {
+                        <tr>
+                            <td><a asp-page="Update" class="btn-sm btn-warning" asp-route-id="@car.Id">edit</a>&nbsp
+                                <form method="post" asp-page-handler="Delete" asp-route-id="@car.Id">
+                                    <button class="btn-sm btn-danger" type="submit">del</button>
+                                </form>
+                            </td>
+                            <td>@car.Id</td>
+                            <td>@car.Make</td>
+                            <td>@car.Model</td>
+                            <td>@car.Year</td>
+                            <td>@car.Doors</td>
+                            <td>@car.Color</td>
+                            <td>@car.Price</td>
+                        </tr>
+                    }      
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

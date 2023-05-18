@@ -1,0 +1,37 @@
+﻿@page
+@using CarsGame.Application;
+
+@model CarsGame.WebApp.Pages.Admin.Cars.CreateModel
+@inject CarService CarService
+@{
+}
+<form method="post">
+    <div class="form-group">
+        <label for="make">Make</label>
+        <input type="text" class="form-control" id="make" name="make" placeholder="Enter a valid MAKE">
+    </div>
+    <div class="form-group">
+        <label for="make">Model</label>
+        <input type="text" class="form-control" id="model" name="model" placeholder="Enter a valid MODEL">
+    </div>
+    <div class="form-group">
+        <label for="make">Year</label>
+        <input type="number" class="form-control" id="year" name="year" placeholder="Enter a valid YEAR">
+    </div>
+    <div class="form-group">
+        <label for="make">Doors</label>
+        <input type="number" class="form-control" id="doors" name="doors" placeholder="Enter a valid number of DOORS">
+    </div>
+    <div class="form-group">
+        <label for="make">Color</label>
+        <input type="text" class="form-control" id="color" name="color" placeholder="Enter a valid Color">
+    </div>
+    <div class="form-group">
+        <label for="make">Price</label>
+        <input type="number" class="form-control" id="price" name="price" placeholder="Enter a valid PRICE">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Save</button>
+        <a href="/Admin/Cars/Index" class="btn btn-primary" role="button">Back</a>
+    </div>
+</form>
